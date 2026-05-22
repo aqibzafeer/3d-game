@@ -10,15 +10,23 @@ function CameraController({ mode }) {
   const controls = useRef()
   const menuPos = [0, 1.5, 3]
   const playPos = [0, 1.2, 1.8]
-
-  useFrame((_, delta) => {
-    const target = mode === 'menu' ? menuPos : playPos
-    camera.position.lerp(new Vector3(target[0], target[1], target[2]), 0.08)
+  useFrame(() => {
+    // keep camera focused on the avatar
     camera.lookAt(0, 1, 0)
-    if (controls.current) controls.current.enabled = (mode === 'menu')
   })
 
-  return <OrbitControls ref={controls} />
+  // configure controls for zooming and orbit
+  return (
+    <OrbitControls
+      ref={controls}
+      enablePan={false}
+      enableZoom={true}
+      enableRotate={true}
+      minDistance={0.5}
+      maxDistance={8}
+      makeDefault
+    />
+  )
 }
 
 export default function Scene({ onLoadAnimations, className }) {

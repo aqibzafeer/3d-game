@@ -37,15 +37,7 @@ export default function Menu({ actions = [] }) {
         <button onClick={() => savePreset()}>Save Preset</button>
         <button style={{marginLeft:8}} onClick={() => setMode(mode === 'menu' ? 'play' : 'menu')}>{mode === 'menu' ? 'Play' : 'Back'}</button>
       </div>
-      <div style={{marginTop:8}}>
-        <strong>Presets:</strong>
-        <div style={{marginTop:6}}>
-          {presets.length ? presets.map((p, i) => (
-            <button key={i} onClick={() => applyPreset(i)} style={{display:'block',marginTop:6}}>{p.name}</button>
-          )) : <div style={{fontSize:12,color:'#666'}}>No presets saved</div>}
-        </div>
-      </div>
-      <p className="hint">Place your avatar at <code>/public/avatar.glb</code>. Click model to cycle animations; drag to rotate.</p>
+ 
     </div>
   )
 }
